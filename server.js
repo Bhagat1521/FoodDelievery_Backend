@@ -4,11 +4,12 @@ import dotenv from "dotenv";
 import cors from "cors";
 import connectDB from "./config/db.js";
 
-// Import Routes
+// -------------------- IMPORT ROUTES --------------------
 import authRoutes from "./routes/authRoutes.js";
 import restaurantRoutes from "./routes/restaurantRoutes.js";
 import foodRoutes from "./routes/foodRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
+import imageRoutes from "./routes/Images.js"; // ✅ Added Image routes
 
 // -------------------- LOAD ENV VARIABLES --------------------
 dotenv.config();
@@ -29,11 +30,12 @@ app.get("/", (req, res) => {
 });
 
 // -------------------- MAIN API ROUTES --------------------
-app.use("/api/auth", authRoutes); // for register/login
+app.use("/api/auth", authRoutes); // register/login
 app.use("/api/restaurants", restaurantRoutes);
 app.use("/api/foods", foodRoutes);
 app.use("/api/orders", orderRoutes);
-
+app.use("/api/images", imageRoutes); // ✅ Added image route
+console.log("✅ Image routes loaded"); // 👈 ADD THIS LINE HERE
 // -------------------- ERROR HANDLING --------------------
 app.use((req, res) => {
   res.status(404).json({ success: false, message: "Route not found" });
