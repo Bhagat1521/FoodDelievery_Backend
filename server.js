@@ -28,6 +28,10 @@ app.use(express.json()); // parse JSON request body
 app.get("/", (req, res) => {
   res.send("🍔 Food Delivery API is running successfully!");
 });
+app.get("/ping", (req, res) => {
+  res.send("✅ Server is alive on Render!");
+});
+
 
 // -------------------- MAIN API ROUTES --------------------
 app.use("/api/auth", authRoutes); // register/login
